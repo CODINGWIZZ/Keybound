@@ -10,10 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e130fdd92ce2ea34d9ee8b85c2cb54d9, type: 3}
-  m_Name: test
+  m_Name: test4
   m_EditorClassIdentifier: 
-  ID: 0
-  DisplayName: 
-  Description: 
-  Icon: {fileID: 21300000, guid: f67e62cac2bc5224d852b1b9054806bc, type: 3}
-  Slot: 1
+  icon: {fileID: 0}
+  slot: 4
