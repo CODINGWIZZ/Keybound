@@ -37,18 +37,14 @@ public class MouseMovement : MonoBehaviour
         xRotation -= mouseY * rotationSpeed;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        // transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        // orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        targetAngles.y += mouseX * rotationSpeed;
+        targetAngles.x += mouseY * rotationSpeed;
 
-        targetAngles.y = yRotation;
-        targetAngles.x = xRotation;
+        targetAngles.x = Mathf.Clamp(targetAngles.x, -90f, 90f);
 
         followAngles = Vector3.SmoothDamp(followAngles, targetAngles, ref followVelocity, dampingTime);
 
-        transform.localRotation = Quaternion.Euler(followAngles.x, followAngles.y, 0);
-        orientation.rotation = Quaternion.Euler(0, followAngles.y, 0);
-        
-        // float a = transform.localRotation.y
-        // orientation.transform.localRotation = new Quaternion (0, -a, 0, 0);
+        transform.rotation = originalRotation * Quaternion.Euler(-followAngles.x, followAngles.y, 0);
+        orientation.rotation = originalRotation * Quaternion.Euler(0, followAngles.y, 0);
     }
 }
