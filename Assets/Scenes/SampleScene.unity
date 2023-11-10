@@ -1461,12 +1461,15 @@ GameObject:
   - component: {fileID: 1584065263}
   - component: {fileID: 1584065262}
   - component: {fileID: 1584065261}
-  - component: {fileID: 1584065260}
   - component: {fileID: 1584065259}
   - component: {fileID: 1584065265}
   - component: {fileID: 1584065266}
   - component: {fileID: 1584065267}
   - component: {fileID: 1584065268}
+  - component: {fileID: 1584065272}
+  - component: {fileID: 1584065271}
+  - component: {fileID: 1584065270}
+  - component: {fileID: 1584065269}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -1501,20 +1504,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &1584065260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1584065258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5a3251d1d708064e92b8c3700e981c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  rb: {fileID: 1584065259}
 --- !u!136 &1584065261
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1674,6 +1663,77 @@ MonoBehaviour:
   slot2: 50
   slot3: 51
   slot4: 52
+--- !u!114 &1584065269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584065258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24021cd632de1349ac29e9ec339de1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxBattery: 100
+  currentBattery: 0
+  batteryDrain: 2
+  amountOfKeys: 4
+  keys: 
+--- !u!114 &1584065270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584065258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68056f5035dd2949982ddf5c15a61c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableWalk: 1
+  walkSpeed: 5
+  enableCrouch: 1
+  holdToCrouch: 1
+  crouchKey: 306
+  crouchHeight: 0.75
+  speedReduction: 0.5
+  capsuleCollider: {fileID: 0}
+  cameraPivot: {fileID: 0}
+  enableHeadBob: 1
+  headBober: {fileID: 0}
+--- !u!114 &1584065271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584065258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeec929c0fa35014fa3abcc375aee56b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationRange: {x: 0, y: 0}
+  rotationSpeed: 10
+  dampingTime: 0.2
+  orientation: {fileID: 0}
+--- !u!114 &1584065272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584065258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5aaff07bc23d3a4997ea432092f6a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Amount: 0.002
+  Frequency: 10
+  Smooth: 10
 --- !u!1 &1655102359
 GameObject:
   m_ObjectHideFlags: 0

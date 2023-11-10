@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyBindes : MonoBehaviour
+public class controles : MonoBehaviour
 {
     //movment
     public KeyCode croutch;
@@ -22,4 +22,8 @@ public class KeyBindes : MonoBehaviour
     public KeyCode slot2;
     public KeyCode slot3;
     public KeyCode slot4;
+
+    //mous sens
+    [Range (0, 10)]
+    public float sens;
 }

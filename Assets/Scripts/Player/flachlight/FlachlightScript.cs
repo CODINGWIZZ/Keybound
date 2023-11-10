@@ -5,7 +5,7 @@ using UnityEngine;
 public class FlachlightScript : MonoBehaviour
 {
     public bool activ;
-    public KeyBindes keyBindes;
+    public controles keyBindes;
 
     public PlayerStats batery;
 

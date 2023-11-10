@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
     [Space(20)]
     public bool enableCrouch = true;
     public bool holdToCrouch = true;
-    public KeyCode crouchKey = KeyCode.LeftControl;
+    public controles keyBindes;
     public float crouchHeight = .75f;
     public float speedReduction = .5f;
     public CapsuleCollider capsuleCollider;
@@ -47,16 +47,16 @@ public class Movement : MonoBehaviour
     {
         if(enableCrouch)
         {
-            if(Input.GetKeyDown(crouchKey) && !holdToCrouch)
+            if(Input.GetKeyDown(keyBindes.croutch) && !holdToCrouch)
             {
                 Crouch();
             }
 
-            if(Input.GetKeyDown(crouchKey) && holdToCrouch)
+            if(Input.GetKeyDown(keyBindes.croutch) && holdToCrouch)
             {
                 isCrouched = true;
                 Crouch();
-            } else if(Input.GetKeyUp(crouchKey) && holdToCrouch)
+            } else if(Input.GetKeyUp(keyBindes.croutch) && holdToCrouch)
             {
                 isCrouched = false;
                 Crouch();
@@ -91,7 +91,6 @@ public class Movement : MonoBehaviour
 
         if(Physics.Raycast(origin, direction, out RaycastHit hit, distance))
         {
-            Debug.DrawRay(origin, direction * distance, Color.red);
             isGrounded = true;
         } else
         {
