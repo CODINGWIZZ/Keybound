@@ -16,4 +16,10 @@ public class KeyBindes : MonoBehaviour
 
     //ficklama av/på
     public KeyCode togelFicklampa;
+
+    //hotbar
+    public KeyCode slot1;
+    public KeyCode slot2;
+    public KeyCode slot3;
+    public KeyCode slot4;
 }

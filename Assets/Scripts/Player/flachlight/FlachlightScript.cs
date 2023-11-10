@@ -5,7 +5,7 @@ using UnityEngine;
 public class FlachlightScript : MonoBehaviour
 {
     public bool activ;
-    public KeyCode activate;
+    public KeyBindes keyBindes;
 
     public PlayerStats batery;
 
@@ -16,7 +16,7 @@ public class FlachlightScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(activate))
+        if (Input.GetKeyDown(keyBindes.togelFicklampa))
         {
             activ = !activ;
         }

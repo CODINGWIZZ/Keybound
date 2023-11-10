@@ -1466,6 +1466,7 @@ GameObject:
   - component: {fileID: 1584065265}
   - component: {fileID: 1584065266}
   - component: {fileID: 1584065267}
+  - component: {fileID: 1584065268}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -1648,8 +1649,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activ: 0
-  activate: 102
+  keyBindes: {fileID: 1584065268}
   batery: {fileID: 1584065266}
+--- !u!114 &1584065268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584065258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08134d2874382db40b0f15ea136fc272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  croutch: 306
+  fram: 119
+  bak: 115
+  venster: 97
+  "h\xF6ger": 100
+  interackt: 101
+  togelFicklampa: 102
+  slot1: 49
+  slot2: 50
+  slot3: 51
+  slot4: 52
 --- !u!1 &1655102359
 GameObject:
   m_ObjectHideFlags: 0
