@@ -21,6 +21,11 @@ public class FlachlightScript : MonoBehaviour
             activ = !activ;
         }
 
+        if (batery.currentBattery <= 0)
+        {
+            activ = false;
+        }
+
         if (activ)
         {
             drain();
