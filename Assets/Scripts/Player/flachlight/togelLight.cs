@@ -5,7 +5,7 @@ using UnityEngine;
 public class togelLight : MonoBehaviour
 {
     public FlachlightScript flachlight;
-    public Light light;
+    public Light _light;
     public PlayerStats playerStats;
 
     // Start is called before the first frame update
@@ -19,11 +19,11 @@ public class togelLight : MonoBehaviour
     {
         if (flachlight.activ && playerStats.currentBattery > 0)
         {
-            light.enabled = true;
+            _light.enabled = true;
         }
         else
         {
-            light.enabled = false;
+            _light.enabled = false;
         }
     }
 }
