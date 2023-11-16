@@ -101,7 +101,7 @@ public class Movement : MonoBehaviour
         if (!isCrouched)
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchHeight, transform.localScale.z);
-            rb.AddForce(Vector3.down * 3f, ForceMode.Impulse);
+            rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
 
             isCrouched = true;
         } else
@@ -109,5 +109,5 @@ public class Movement : MonoBehaviour
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
             isCrouched = false;
         }
-    }
+    }   
 }
