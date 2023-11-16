@@ -34,6 +34,8 @@ public class Movement : MonoBehaviour
     public bool enableHeadBob = true;
     public HeadbobSystem headBober;
 
+    private float startYScale;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -41,24 +43,20 @@ public class Movement : MonoBehaviour
         originalCapsuleCenter = capsuleCollider.center;
         capsuleHeight = capsuleCollider.height;
         originalWalkSpeed = walkSpeed;
+        startYScale = transform.localScale.y;
     }
 
     void Update()
     {
         if(enableCrouch)
         {
-            if(Input.GetKeyDown(keyBindes.croutch) && !holdToCrouch)
-            {
-                Crouch();
-            }
-
-            if(Input.GetKeyDown(keyBindes.croutch) && holdToCrouch)
-            {
-                isCrouched = true;
-                Crouch();
-            } else if(Input.GetKeyUp(keyBindes.croutch) && holdToCrouch)
+            if(Input.GetKeyDown(keyBindes.croutch))
             {
                 isCrouched = false;
+                Crouch();
+            } else if(Input.GetKeyUp(keyBindes.croutch))
+            {
+                isCrouched = true;
                 Crouch();
             }
         }
@@ -71,7 +69,7 @@ public class Movement : MonoBehaviour
         if(enableWalk)
         {
             playerInput = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            playerInput = transform.TransformDirection(playerInput) * walkSpeed;
+            playerInput = transform.TransformDirection(playerInput) * walkSpeed * (!isCrouched ? 1 : speedReduction);
 
             velocity = rb.velocity;
             velocityChange = (playerInput - velocity);
@@ -102,41 +100,13 @@ public class Movement : MonoBehaviour
     {
         if (!isCrouched)
         {
-            DOTween.To(() => capsuleCollider.center,
-                x => capsuleCollider.center = x,
-                originalCapsuleCenter, 2);
-
-            DOTween.To(() => capsuleCollider.height,
-                x => capsuleCollider.height = x, 2,
-                2);
-
-            DOTween.To(() => cameraPivot.transform.localPosition,
-                x=> cameraPivot.transform.localPosition = x,
-                new Vector3(0, 0.5f, 0), 2);
-
-            DOTween.To(() => walkSpeed,
-                x => walkSpeed = x, originalWalkSpeed,
-                2);
+            transform.localScale = new Vector3(transform.localScale.x, crouchHeight, transform.localScale.z);
+            rb.AddForce(Vector3.down * 3f, ForceMode.Impulse);
 
             isCrouched = true;
         } else
         {
-            DOTween.To(() => capsuleCollider.center,
-                x => capsuleCollider.center = x,
-                new Vector3(0, -0.5f, 0), 2);
-
-            DOTween.To(() => capsuleCollider.height,
-                x => capsuleCollider.height = x, 1,
-                2);
-
-            DOTween.To(() => cameraPivot.transform.localPosition,
-                x => cameraPivot.transform.localPosition = x,
-                new Vector3(0, 0.0f, 0), 2);
-
-            DOTween.To(() => walkSpeed,
-                x => walkSpeed = x, speedReduction,
-                2);
-
+            transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
             isCrouched = false;
         }
     }
