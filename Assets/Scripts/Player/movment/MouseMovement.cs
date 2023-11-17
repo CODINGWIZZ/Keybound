@@ -43,9 +43,8 @@ public class MouseMovement : MonoBehaviour
 
         // followAngles = Vector3.SmoothDamp(followAngles, targetAngles, ref followVelocity, dampingTime);
 
-        transform.localEulerAngles = new Vector3 (xRotation, yRotation, 0) ;
+        transform.localEulerAngles = new Vector3 (xRotation, 0, 0) ;
         orientation.localEulerAngles = new Vector3 (0, yRotation, 0);
-
         // transform.rotation = originalRotation * Quaternion.Euler(-followAngles.x, followAngles.y, 0);
         // orientation.rotation = originalRotation * Quaternion.Euler(0, followAngles.y, 0);
     }
