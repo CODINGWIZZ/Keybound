@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,8 +17,6 @@ public class MouseMovement : MonoBehaviour
 
     float yRotation;
     float xRotation;
-
-
     void Start()
     {
         originalRotation = transform.localRotation;
@@ -38,14 +36,17 @@ public class MouseMovement : MonoBehaviour
         xRotation -= mouseY * controle.sens;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        targetAngles.y += mouseX * controle.sens;
+        // targetAngles.y += mouseX * controle.sens;
 
-        targetAngles.x += mouseY * controle.sens;
-        targetAngles.x = Mathf.Clamp(targetAngles.x, -90f, 90f);
+        // targetAngles.x += mouseY * controle.sens;
+        // targetAngles.x = Mathf.Clamp(targetAngles.x, -90f, 90f);
 
-        followAngles = Vector3.SmoothDamp(followAngles, targetAngles, ref followVelocity, dampingTime);
+        // followAngles = Vector3.SmoothDamp(followAngles, targetAngles, ref followVelocity, dampingTime);
 
-        transform.rotation = originalRotation * Quaternion.Euler(-followAngles.x, followAngles.y, 0);
-        orientation.rotation = originalRotation * Quaternion.Euler(0, followAngles.y, 0);
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+
+        // transform.rotation = originalRotation * Quaternion.Euler(-followAngles.x, followAngles.y, 0);
+        // orientation.rotation = originalRotation * Quaternion.Euler(0, followAngles.y, 0);
     }
 }

@@ -90,7 +90,7 @@ public class Movement : MonoBehaviour
 
     private void Crouch()
     {
-        if (Physics.Raycast(cameraPivot.transform.position, Vector3.up, startYScale - crouchHeight + 1f))
+        if (Physics.Raycast(cameraPivot.transform.position, Vector3.up, startYScale - crouchHeight + 0.2f))
         {
             canStand = false;
         }
