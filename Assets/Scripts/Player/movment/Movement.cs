@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public class Movement : MonoBehaviour
 {
@@ -35,6 +34,7 @@ public class Movement : MonoBehaviour
     public HeadbobSystem headBober;
 
     private float startYScale;
+    private bool canStand = true;
 
     private void Start()
     {
@@ -50,15 +50,7 @@ public class Movement : MonoBehaviour
     {
         if(enableCrouch)
         {
-            if(Input.GetKeyDown(keyBindes.croutch))
-            {
-                isCrouched = false;
-                Crouch();
-            } else if(Input.GetKeyUp(keyBindes.croutch))
-            {
-                isCrouched = true;
-                Crouch();
-            }
+            Crouch();
         }
 
         CheckGround();
@@ -98,16 +90,32 @@ public class Movement : MonoBehaviour
 
     private void Crouch()
     {
-        if (!isCrouched)
+        if (Physics.Raycast(cameraPivot.transform.position, Vector3.up, startYScale - crouchHeight + 1f))
         {
-            transform.localScale = new Vector3(transform.localScale.x, crouchHeight, transform.localScale.z);
-            rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+            canStand = false;
+        }
+        else
+        {
+            canStand = true;
+        }
 
-            isCrouched = true;
+        if(Input.GetKey(keyBindes.croutch))
+        {
+            if(!isCrouched)
+            {
+                isCrouched = true;
+
+                transform.localScale = new Vector3(transform.localScale.x, crouchHeight, transform.localScale.z);
+                rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+            }
         } else
         {
-            transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
-            isCrouched = false;
+            if(isCrouched && canStand)
+            {
+                isCrouched = false;
+
+                transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
+            }
         }
     }   
 }
