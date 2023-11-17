@@ -19,4 +19,12 @@ public class PlayerStats : MonoBehaviour
             keys.Add(key);
         }
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            currentBattery = maxBattery;
+        }
+    }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.028372113, g: 0.031292293, b: 0.0360556, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2181,7 +2181,7 @@ MonoBehaviour:
   m_IsGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 1
+  weight: 0.85
   sharedProfile: {fileID: 11400000, guid: 7d60f393db84ddf49afa8ab04085ac55, type: 2}
 --- !u!4 &1110521027
 Transform:
@@ -3068,7 +3068,6 @@ GameObject:
   - component: {fileID: 1584065267}
   - component: {fileID: 1584065268}
   - component: {fileID: 1584065270}
-  - component: {fileID: 1584065269}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -3264,23 +3263,6 @@ MonoBehaviour:
   slot3: 51
   slot4: 52
   sens: 1
---- !u!114 &1584065269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1584065258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e24021cd632de1349ac29e9ec339de1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxBattery: 100
-  currentBattery: 0
-  batteryDrain: 2
-  amountOfKeys: 4
-  keys: 
 --- !u!114 &1584065270
 MonoBehaviour:
   m_ObjectHideFlags: 0
