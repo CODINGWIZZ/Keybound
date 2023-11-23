@@ -5,12 +5,23 @@ using UnityEngine;
 public class Footstep : MonoBehaviour
 {
     public GameObject footsteps;
+
+    public Movement movement;
+
     void Start()
     {
         footsteps.SetActive(false);
     }
     void Update()
     {
+        if(movement.isCrouched == true)
+        {
+            footsteps.GetComponent<AudioSource>().volume = 0.5f;
+        } else
+        {
+            footsteps.GetComponent<AudioSource>().volume = 1.0f;
+        }
+
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             PlayFootsteps();

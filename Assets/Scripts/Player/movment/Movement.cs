@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
     public float speedReduction = .5f;
     public CapsuleCollider capsuleCollider;
     public Transform cameraPivot;
-    private bool isCrouched = false;
+    public bool isCrouched = false;
     private Vector3 originalCapsuleCenter;
     private Vector3 jointOriginalPosition;
     private float capsuleHeight;
