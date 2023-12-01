@@ -27,7 +27,6 @@ public class ItemPickUp : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(Vector3.Distance(player.position, transform.position));   
 
         if (Vector3.Distance(player.position, transform.position) <= pickUpDistense && Input.GetKeyDown(controles.interackt))
         {
