@@ -5,12 +5,18 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class ItemPickUp : MonoBehaviour
 {
-    [SerializeField] private int pickupSlot;
-
     public float PickUpRadius;
+    public float pickUpDistense;
+
+    public controles controles;
+
+    public Transform player;
+
     public InventoryItemData itemData;
+    public PlayerStats playerStats;
 
     private SphereCollider myColider;
+    public Collider collider;
 
     private void Awake()
     {
@@ -19,7 +25,41 @@ public class ItemPickUp : MonoBehaviour
         myColider.radius = PickUpRadius;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
+    {
+        Debug.Log(Vector3.Distance(player.position, transform.position));   
+
+        if (Vector3.Distance(player.position, transform.position) <= pickUpDistense && Input.GetKeyDown(controles.interackt))
+        {
+            if (itemData.clas == "pick")
+            {
+                var inventory = collider.transform.GetComponent<InvnetoryHolder>();
+                if (inventory.InvnetorySystem.AddToInvneoty(itemData, itemData.Slot))
+                {
+                    Destroy(this.gameObject);
+                }
+            }
+            if(itemData.clas == "key")
+            {
+                for(int i = 0; i < playerStats.keys.Count; i++)
+                {
+                    if(playerStats.keys[i] == true)
+                    {
+                        continue;
+                    }
+
+                    if(playerStats.keys[i] == false)
+                    {
+                        playerStats.keys[i] = true;
+                        Destroy(this.gameObject);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    /*private void PickPocketedIt(Collider other)
     {
 
         
@@ -30,5 +70,5 @@ public class ItemPickUp : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-    }
+    }*/
 }

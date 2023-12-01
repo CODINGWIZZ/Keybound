@@ -14,7 +14,7 @@ public class Movement : MonoBehaviour
 
     [Space(20)]
     private float originalWalkSpeed;
-    private bool isGrounded;
+    private bool isGrounded = false;
 
     [Space(20)]
     public bool enableCrouch = true;
