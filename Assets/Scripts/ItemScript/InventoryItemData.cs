@@ -11,4 +11,12 @@ public class InventoryItemData : ScriptableObject
     public string Description;  
     public Sprite Icon;
     public int Slot;
+    public string clas;
+
+    public List<string> clases = new List<string>()
+    {
+        "Key",
+        "battery",
+        "item"
+    };
 }

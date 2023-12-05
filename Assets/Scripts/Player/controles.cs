@@ -26,4 +26,9 @@ public class controles : MonoBehaviour
     //mous sens
     [Range (0, 10)]
     public float sens;
+
+    //meue
+    public bool dylcticFont;
+    [Range(0, 100)]
+    public float fontSise;
 }
