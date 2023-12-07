@@ -59,6 +59,8 @@ public class readHint : MonoBehaviour
                 footstep.enabled = !footstep.enabled;
                 headbob.enabled = !headbob.enabled;
                 flachlight.enabled = !flachlight.enabled;
+
+
             }
         }
     }
