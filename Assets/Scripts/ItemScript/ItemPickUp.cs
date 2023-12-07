@@ -40,6 +40,7 @@ public class ItemPickUp : MonoBehaviour
             }
             if(itemData.clas == "key")
             {
+
                 for(int i = 0; i < playerStats.keys.Count; i++)
                 {
                     if(playerStats.keys[i] == true)
@@ -54,6 +55,12 @@ public class ItemPickUp : MonoBehaviour
                         break;
                     }
                 }
+            }
+            if(itemData.clas == "battery")
+            {
+                playerStats.currentBattery = playerStats.maxBattery;
+                Destroy(this.gameObject);
+
             }
         }
     }

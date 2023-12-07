@@ -10,10 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e130fdd92ce2ea34d9ee8b85c2cb54d9, type: 3}
-  m_Name: test2
+  m_Name: Battery
   m_EditorClassIdentifier: 
-  ID: 0
-  DisplayName: 
+  ID: 2
+  DisplayName: battery
   Description: 
   Icon: {fileID: 21300000, guid: e6329516bf0e52b4b8f4d9482f495e1b, type: 3}
-  Slot: 2
+  Slot: 0
+  clas: battery
+  clases:
+  - Key
+  - battery
+  - item

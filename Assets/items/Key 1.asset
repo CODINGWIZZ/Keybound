@@ -16,5 +16,9 @@ MonoBehaviour:
   DisplayName: Key 1
   Description: This is the firs key and it opens the dor for the second room.
   Icon: {fileID: 21300000, guid: f67e62cac2bc5224d852b1b9054806bc, type: 3}
-  clas: key
   Slot: 1
+  clas: key
+  clases:
+  - key
+  - battery
+  - item
