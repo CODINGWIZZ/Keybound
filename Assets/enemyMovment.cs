@@ -110,4 +110,12 @@ public class enemyMovment : MonoBehaviour
             playeTransform.position = spawn.spawnPos;
         }
     }
+
+    public void warning()
+    {
+        if(Vector3.Distance(transform.position, playeTransform.position) < 10)
+        {
+
+        }
+    }
 }
