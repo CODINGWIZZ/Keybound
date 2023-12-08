@@ -18,6 +18,8 @@ public class ItemPickUp : MonoBehaviour
     private SphereCollider myColider;
     public Collider collider;
 
+    public Movement spawn;
+
     private void Awake()
     {
         myColider = GetComponent<SphereCollider>();
@@ -51,6 +53,7 @@ public class ItemPickUp : MonoBehaviour
                     if(playerStats.keys[i] == false)
                     {
                         playerStats.keys[i] = true;
+                        spawn.spawnPos = player.position;
                         Destroy(this.gameObject);
                         break;
                     }

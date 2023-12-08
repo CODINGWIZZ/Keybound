@@ -13,52 +13,101 @@ public class enemyMovment : MonoBehaviour
 
     public bool movStart;
 
-    public Transform fuckUP;
+    public Vector3 playerLastSeen;
+    public Transform playeTransform;
+
+    public Transform startTransform;
+
+    public float agrorange;
+
+    [Range(0f, 360f)]
+    public float angle;
+
+    public LayerMask targetMask;
+    public LayerMask obstical;
+
+    public Movement spawn;
+    
 
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
+    private void Start()
+    {
+        startTransform = transform;
+    }
+
     private void Update()
     {
-        /*if (n <= position.Count && !movStart)
+        if (playerLastSeen == new Vector3(0, 0, 0))
         {
-            if (n == position.Count && transform.position == position[n].position)
+            if (transform.position.x == position[0].position.x && transform.position.z == position[0].position.z)
             {
-                movStart = true;
+                n = 1;
             }
-            else if (transform.position == position[n].position)
+            else if (navMeshAgent.destination.x == position[1].position.x && transform.position.z == position[1].position.z)
             {
-                n++;
-                navMeshAgent.destination = position[n].position;
+                n = 0;
             }
-            
+            navMeshAgent.destination = position[n].position;
         }
-        else if (n >= 0 && movStart)
+        else
         {
-            if (n == 0 && transform.position == position[n].position)
+            if (transform.position != playerLastSeen)
             {
-                movStart = false;
+                navMeshAgent.destination = playeTransform.position;
             }
-            else if (transform.position == position[n].position)
+            else
             {
-                n--;
-                navMeshAgent.destination = position[n--].position;
+                playerLastSeen = new Vector3(0, 0, 0);
             }
-            
-        }*/
+        }
 
-        //navMeshAgent.destination = fuckUP.position;
+        FindeVispelTargets();
+        FindeVispelTargets();
+    }
 
-        if (transform.position.x == position[0].position.x && transform.position.z == position[0].position.z)
+    public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
+    {
+        if (!angleIsGlobal)
         {
-            n = 1;
+            angleInDegrees += transform.eulerAngles.y;
         }
-        else if (navMeshAgent.destination.x == position[1].position.x && transform.position.z == position[1].position.z)
+        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
+    }
+
+    public void FindeVispelTargets()
+    {
+        Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, agrorange, targetMask);
+
+        for(int i = 0; i <targetsInViewRadius.Length; i++)
         {
-            n = 0;
+            Transform target = targetsInViewRadius[i].transform;
+            Vector3 dirToTarget = (target.position - transform.position).normalized;
+            if(Vector3.Angle(transform.forward, dirToTarget)< angle / 2)
+            {
+                float disTotarget = Vector3.Distance(transform.position, target.position);
+
+                if(!Physics.Raycast(transform.position, dirToTarget, disTotarget, obstical))
+                {
+                    Debug.Log("I see you");
+                    playerLastSeen = playeTransform.position;
+                    YouDide();
+
+                }
+            }
         }
-        navMeshAgent.destination = position[n].position;
+    }
+
+    public void YouDide()
+    {
+        if(Vector3.Distance(transform.position, playeTransform.position) < 1.5)
+        {
+            transform.position = startTransform.position;
+            playerLastSeen = new Vector3(0, 0, 0);
+            playeTransform.position = spawn.spawnPos;
+        }
     }
 }

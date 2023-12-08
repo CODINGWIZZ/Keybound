@@ -12,5 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e130fdd92ce2ea34d9ee8b85c2cb54d9, type: 3}
   m_Name: test3
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
-  slot: 3
+  ID: 3
+  DisplayName: key2
+  Description: asdfdasfaf
+  Icon: {fileID: 21300000, guid: 9904905b26770a44abc3b9b355e942eb, type: 3}
+  Slot: 4
+  clas: key
+  clases:
+  - Key
+  - battery
+  - item

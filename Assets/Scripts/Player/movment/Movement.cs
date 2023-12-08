@@ -36,8 +36,11 @@ public class Movement : MonoBehaviour
     private float startYScale;
     private bool canStand = true;
 
+    public Vector3 spawnPos;
+
     private void Start()
     {
+        spawnPos = new Vector3(25, 25, 25);
         rb = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         originalCapsuleCenter = capsuleCollider.center;
