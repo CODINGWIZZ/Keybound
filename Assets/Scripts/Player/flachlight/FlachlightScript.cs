@@ -9,6 +9,8 @@ public class FlachlightScript : MonoBehaviour
 
     public PlayerStats batery;
 
+    public ItemHoldSound itemSound;
+
     private void Awake()
     {
         batery.currentBattery = batery.maxBattery;
@@ -19,6 +21,11 @@ public class FlachlightScript : MonoBehaviour
         if (Input.GetKeyDown(keyBindes.togelFicklampa))
         {
             activ = !activ;
+
+            if(batery.currentBattery > 0)
+            {
+                itemSound.playItemSound();
+            }
         }
 
         if (batery.currentBattery <= 0)
