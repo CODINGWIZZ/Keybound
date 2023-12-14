@@ -10,9 +10,6 @@ public class PauseMenu : MonoBehaviour
 
     public MouseMovement mouseMovement;
 
-    public GameObject inventory;
-    public GameObject battery;
-
     void Start()
     {
         pauseMenu.SetActive(false);
@@ -39,9 +36,6 @@ public class PauseMenu : MonoBehaviour
 
         mouseMovement.enabled = false;
 
-        inventory.SetActive(false);
-        battery.SetActive(false);
-
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -53,9 +47,6 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
 
         mouseMovement.enabled = true;
-
-        inventory.SetActive(true);
-        battery.SetActive(true);
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

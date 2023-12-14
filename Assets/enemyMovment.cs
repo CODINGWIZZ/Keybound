@@ -27,8 +27,10 @@ public class enemyMovment : MonoBehaviour
     public LayerMask obstical;
 
     public Movement spawn;
-    
 
+    public float warningdis;
+
+    public Collider collider;
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -66,7 +68,7 @@ public class enemyMovment : MonoBehaviour
         }
 
         FindeVispelTargets();
-        FindeVispelTargets();
+        warning(transform.position, playerLastSeen, warningdis, targetMask);
     }
 
     public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
@@ -103,7 +105,7 @@ public class enemyMovment : MonoBehaviour
 
     public void YouDide()
     {
-        if(Vector3.Distance(transform.position, playeTransform.position) < 1.5)
+        if (Vector3.Distance(transform.position, playeTransform.position) < 1.5 || transform.position.x == playeTransform.position.x && transform.position.z == playeTransform.position.z && spawn.isCrouched == true)
         {
             transform.position = startTransform.position;
             playerLastSeen = new Vector3(0, 0, 0);
@@ -111,11 +113,15 @@ public class enemyMovment : MonoBehaviour
         }
     }
 
-    public void warning()
+    public void warning(Vector3 orgin, Vector3 diraction, float maxdis, int layermask)
     {
-        if(Vector3.Distance(transform.position, playeTransform.position) < 10)
+        if (Physics.Raycast(orgin, diraction, maxdis, layermask))
         {
-
+            collider.enabled = true;
+        }
+        else
+        {
+            collider.enabled = false;
         }
     }
 }
