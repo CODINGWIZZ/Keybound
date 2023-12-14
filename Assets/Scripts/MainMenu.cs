@@ -9,6 +9,8 @@ public class MainMenu : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void Settings()
@@ -18,17 +20,7 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
         Debug.Log("Game has been exited");
-    }
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
+        Application.Quit();
     }
 }
