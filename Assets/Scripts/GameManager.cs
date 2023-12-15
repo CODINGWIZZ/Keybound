@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public controles globalControlls;
+
     private void Awake()
     {
         Instance = this;
