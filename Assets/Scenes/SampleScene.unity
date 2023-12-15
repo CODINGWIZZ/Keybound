@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0056748246, g: 0.0062586972, b: 0.007211522, a: 1}
+  m_IndirectSpecularColor: {r: 262.18533, g: 324.8582, b: 429.96686, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1168,7 +1168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 774766aeefe837043acef15ad4e039ed, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.179
+      value: 0.262
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 774766aeefe837043acef15ad4e039ed, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2810,7 +2810,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1110521026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4068,9 +4068,10 @@ GameObject:
   - component: {fileID: 1584065270}
   - component: {fileID: 1584065271}
   - component: {fileID: 1584065272}
+  - component: {fileID: 1584065273}
   m_Layer: 11
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4322,6 +4323,19 @@ MonoBehaviour:
   pauseMenu: {fileID: 1701278352}
   isPaused: 0
   mouseMovement: {fileID: 963194230}
+--- !u!114 &1584065273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584065258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dcf6df245cd6f94c9a69882d54a7ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalControlls: {fileID: 1584065268}
 --- !u!1001 &1619463166
 PrefabInstance:
   m_ObjectHideFlags: 0
