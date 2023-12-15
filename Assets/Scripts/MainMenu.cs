@@ -27,7 +27,7 @@ public class MainMenu : MonoBehaviour
     public void ToggleDyslexiaFont()
     {
         toggle.isOn = !toggle.isOn;
-        GameManager.Instance.globalControlls.dylcticFont = !GameManager.Instance.globalControlls.dylcticFont;
+        GameManager.Instance.globalControlls.dylcticFont = toggle.isOn;
     }
 
     public void QuitGame()
