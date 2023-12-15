@@ -16,7 +16,7 @@ public class enemyMovment : MonoBehaviour
     public Vector3 playerLastSeen;
     public Transform playeTransform;
 
-    public Transform startTransform;
+    public Vector3 startTransform;
 
     public float agrorange;
 
@@ -28,9 +28,12 @@ public class enemyMovment : MonoBehaviour
 
     public Movement spawn;
 
-    public float warningdis;
 
-    public Collider collider;
+    public float warningdis;
+    public float stillcount;
+    public Transform lasttransform;
+
+    //public Collider collider;
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -38,7 +41,7 @@ public class enemyMovment : MonoBehaviour
 
     private void Start()
     {
-        startTransform = transform;
+        startTransform = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
     }
 
     private void Update()
@@ -57,19 +60,38 @@ public class enemyMovment : MonoBehaviour
         }
         else
         {
-            if (transform.position != playerLastSeen)
+            if (transform.position.x != playerLastSeen.x && transform.position.z != playerLastSeen.z)
             {
-                navMeshAgent.destination = playeTransform.position;
+                navMeshAgent.destination = playerLastSeen;
+            }
+            else if (transform.position == playerLastSeen)
+            {
+                Debug.Log("bin her don this");
+                playerLastSeen = new Vector3(0, 0, 0);
             }
             else
             {
                 playerLastSeen = new Vector3(0, 0, 0);
             }
         }
+        if(lasttransform.position == transform.position)
+        {
+            stillcount += Time.deltaTime;
+        }
+        if (stillcount >= 5)
+        {
+            playerLastSeen = new Vector3 (0,0,0);
+            stillcount = 0;
+        }
+        else
+        {
+            stillcount = 0; 
+        }
+        lasttransform = transform;
 
         FindeVispelTargets();
-        warning(transform.position, playerLastSeen, warningdis, targetMask);
     }
+    
 
     public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
     {
@@ -92,11 +114,12 @@ public class enemyMovment : MonoBehaviour
             {
                 float disTotarget = Vector3.Distance(transform.position, target.position);
 
-                if(!Physics.Raycast(transform.position, dirToTarget, disTotarget, obstical))
+                if(!Physics.Raycast(transform.position, dirToTarget, agrorange, obstical))
                 {
                     Debug.Log("I see you");
                     playerLastSeen = playeTransform.position;
                     YouDide();
+
 
                 }
             }
@@ -105,23 +128,13 @@ public class enemyMovment : MonoBehaviour
 
     public void YouDide()
     {
-        if (Vector3.Distance(transform.position, playeTransform.position) < 1.5 || transform.position.x == playeTransform.position.x && transform.position.z == playeTransform.position.z && spawn.isCrouched == true)
+        Debug.Log(Vector3.Distance(transform.position, playeTransform.position));
+
+        if (Vector3.Distance(transform.position, playeTransform.position) < 3|| transform.position.x == playeTransform.position.x && transform.position.z == playeTransform.position.z && spawn.isCrouched == true)
         {
-            transform.position = startTransform.position;
+            transform.position = startTransform;
             playerLastSeen = new Vector3(0, 0, 0);
             playeTransform.position = spawn.spawnPos;
-        }
-    }
-
-    public void warning(Vector3 orgin, Vector3 diraction, float maxdis, int layermask)
-    {
-        if (Physics.Raycast(orgin, diraction, maxdis, layermask))
-        {
-            collider.enabled = true;
-        }
-        else
-        {
-            collider.enabled = false;
         }
     }
 }
