@@ -7,7 +7,7 @@ public class reversSin : MonoBehaviour
     public HeadbobSystem headbob;
     public Movement movement;
     Vector3 StartPosition;
-    public int move;
+    public float move;
 
     void Start()
     {
@@ -43,8 +43,8 @@ public class reversSin : MonoBehaviour
     {
         Vector3 position = Vector3.zero;
 
-        position.y += -Mathf.Lerp(position.y, Mathf.Sin(Time.time * headbob.Frequency) * headbob.Amount * 1.4f, headbob.Smooth * Time.deltaTime);
-        position.x += -Mathf.Lerp(position.x, Mathf.Cos(Time.time * headbob.Frequency / 2f) * headbob.Amount * 1.6f, headbob.Smooth * Time.deltaTime);
+        position.y += -Mathf.Lerp(position.y, Mathf.Sin(Time.time * headbob.Frequency) * headbob.Amount * 0.8f, headbob.Smooth * Time.deltaTime);
+        position.x += -Mathf.Lerp(position.x, Mathf.Cos(Time.time * headbob.Frequency / 2f) * headbob.Amount * 0.4f, headbob.Smooth * Time.deltaTime);
 
         transform.localPosition += position;
 

@@ -67,7 +67,7 @@ public class Movement : MonoBehaviour
             playerInput = transform.TransformDirection(playerInput) * walkSpeed * (!isCrouched ? 1 : speedReduction);
 
             velocity = rb.velocity;
-            velocityChange = (playerInput - velocity);
+            velocityChange = playerInput - velocity;
 
             velocityChange.y = 0;
 
